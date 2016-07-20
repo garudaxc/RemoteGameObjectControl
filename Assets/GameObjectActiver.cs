@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Text;
 
-public class GoActiver : MonoBehaviour {
+public class GameObjectActiver : MonoBehaviour {
     
     public int Code
     {

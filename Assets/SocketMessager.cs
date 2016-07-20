@@ -48,6 +48,19 @@ using System.Threading;
             }
         }
 
+        public string ConnectionInfo
+        {
+            get
+            {
+                if(socket_ != null)
+                {
+                    return socket_.RemoteEndPoint.ToString();
+                }
+
+                return "";
+            }
+        }
+
         [Serializable]
         public class Msg
         {
@@ -185,6 +198,10 @@ using System.Threading;
                 try
                 {
                     int count = socket_.Receive(buffer, receOffset, buffer.Length - receOffset, 0);
+                    if (count == 0)
+                    {
+                        throw new SocketException();
+                    }
 
                     int length = BitConverter.ToInt32(buffer, 0);
 

@@ -113,8 +113,17 @@ public class RemoteGameObjectControl : MonoBehaviour {
             return;
         }
 
-        GUILayoutOption[] options = new GUILayoutOption[] { GUILayout.Height(100), GUILayout.Width(120) };
+        GUILayoutOption[] options = new GUILayoutOption[] { GUILayout.Height(60), GUILayout.Width(120) };
         GUILayout.BeginVertical();
+
+        if(messager.IsConnected)
+        {
+            GUILayout.Label(string.Format("client connected : {0}", messager.ConnectionInfo));
+        }
+        else
+        {
+            GUILayout.Label("client not connected");
+        }
 
         if (GUILayout.Button("update", options))
         {

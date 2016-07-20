@@ -126,8 +126,7 @@ public class HierarchySerializer
         for (int i = 0; i < objects.Length; i++)
         {
             objects[i] = new GameObject();
-            objects[i].AddComponent<GoActiver>();
-            objects[i].GetComponent<GoActiver>().Code = data.hash[i];
+            objects[i].AddComponent<GameObjectActiver>().Code = data.hash[i];
 
             objects[i].name = data.goNames[i];
             int parent = data.hierarchy[i] & 0x7fff;
@@ -168,9 +167,9 @@ public class HierarchySerializer
 
         GameObjectId id = new GameObjectId();
         id.path = path;
-        if(go.GetComponent<GoActiver>() != null)
+        if (go.GetComponent<GameObjectActiver>() != null)
         {
-            id.hash = go.GetComponent<GoActiver>().Code;        
+            id.hash = go.GetComponent<GameObjectActiver>().Code;        
         }
         else
         {
